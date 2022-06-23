@@ -5,21 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Quench - Eat in or go out</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Sansita&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
     <header class="page-header">
-        <h1 class="text-center heading">
-            Satisfy
-        </h1>
+        <h1 class="text-center heading"> Satisfy - Put your shoes on, it's time to head out !</h1>
     </header>
+    <div class="row">
+    <div class="card col-4">
+      <h3 class="card-header text-center">Where to go?</h3>
+      <form id="user-form" class="card-body">
+        <label class="form-label">Postcode</label>
+        <input id="postcode" type="text" autofocus="true" class="form-input" />
+        <button type="submit" class="btn btn-sm searchBtn btn-outline-primary">Search</button>
+      </form>
+    </div>
+   
+    <div class="col-8">
+      <h2 class="subtitle">Showing eateries for postcode: <span id="searched-postcode"></span></h2>
+      <div id="places-container" class="list-group"></div>
+    </div>
+    </div>
 
-    <div class="text-center">
-        <p class="lead">Lets work here on the eat out option :)</p>
-        <a href="eatIn.html" class="btn btn-info btn-lg btn-block active buttons" role="button">Eat in </a>
-        <a href="eatOut.html" class="btn btn-info btn-lg btn-block active buttons" role="button">Eat out</a>
+    <div id="map">
     </div>
 
 
@@ -74,5 +87,6 @@ width:100%;
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA68mwwjSKST6MHPOrTYgmfofw6Ma3uAZE&libraries=places&callback=initMap">
 </script>
 <script type="text/javascript"></script>
+
 </body>
 </html>

@@ -28,80 +28,8 @@ body {
     margin: 20px 50px;
     border-bottom: solid 2px #6dd5ed;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+.searchBtn {
+    display: block;
+    width: 100%;
+    margin-top: 2%;
+    }
