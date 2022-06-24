@@ -34,26 +34,32 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-<script type="text/javascript"></script>
-
+  <!--Style for google maps-->
+ <style>
+  #map{
+  height:400px;
+  /* width:25%; */
+  }
+  </style>
+ 
+  <!--div for google maps-->
+  <h1>our first google maps</h1>
+  <div class="row card col-4" id="map"></div>
+ 
+  <!--Function to call google maps-->
+  <script>
+      function initMap(){
+          var options = {
+              zoom:12,
+              center: {lat:-33.867,lng:151.195}
+          }
+          var map = new google.maps.Map(document.getElementById("map"),options);
+      }
+  </script>
+  <!--Google Maps Places API-->
+  <script async
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA68mwwjSKST6MHPOrTYgmfofw6Ma3uAZE&libraries=places&callback=initMap">
+  </script>
+  <script type="text/javascript"></script>
 </body>
 </html>
