@@ -50,11 +50,25 @@
   <script>
       function initMap(){
           var options = {
-              zoom:12,
-              center: {lat:-33.867,lng:151.195}
+              zoom:15,
+              center: {lat:-33.89601,lng:151.17946}
           }
           var map = new google.maps.Map(document.getElementById("map"),options);
+
+          var marker = new google.maps.Marker({
+            position:{lat:-33.89571,lng:151.18073},
+            map:map
+          });
+
+          var infoWindow = new google.maps.InfoWindow({
+            content:"<h1>Italian Food</h1>"
+          });
+
+          marker.addListener("click",function(){
+            infoWindow.open(map, marker);
+          })
       }
+
   </script>
   <!--Google Maps Places API-->
   <script async
