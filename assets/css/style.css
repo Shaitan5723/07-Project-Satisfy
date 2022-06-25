@@ -47,3 +47,18 @@ body {
 .recipe-container .places-container{
     margin-left: 2%;
 }
+
+/* Set the size of the div element that contains the map */
+#map {
+    height: 400px;
+    /* The height is 400 pixels */
+    width: 100%;
+    /* The width is the width of the web page */
+  }
+
+input {
+    height: 30px;
+    margin: 12px 0px;
+    padding: 10px;
+    width: 300px;
+  }
