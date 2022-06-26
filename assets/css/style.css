@@ -12,7 +12,7 @@ h1 {
 }
 body {
     background:#cbd4cf;
-    margin: 20px;
+    margin: 0,20px,20px,20px;
     font-family: 'Sansita', sans-serif;
 }
 
@@ -78,6 +78,12 @@ input {
     background-position: center;
     border: #765a71 3px solid;
 }
+
+.test:hover{
+    opacity: 0.7;
+}
+
+
 .overlay-text {
     position: relative;
     text-align: center;
@@ -90,9 +96,19 @@ input {
     top: 50% ;
     /* width: 100%; */
     
-  }
+}
 
-  a {
-    display: inline-block;
+a {
     text-decoration: none;
+    color: inherit;
+}
+
+
+nav {
+    margin-top: -1%;
+    padding: 0%;
+    border: #967490 solid;
+    background-color: #765a71;
+    font-weight: bold;
+    text-decoration:none;
 }
