@@ -4,9 +4,15 @@
     margin: 2%;
 }
 
+h1 {
+    font-size: 4rem;
+    font-weight: bold;
+    color: #666666;
+
+}
 body {
-    background: linear-gradient(270deg, #aee0ec, #99e3f3);
-    margin: 20px;
+    background:#cbd4cf;
+    margin: 0,20px,20px,20px;
     font-family: 'Sansita', sans-serif;
 }
 
@@ -24,13 +30,11 @@ body {
 .heading {
     margin-bottom: 20px;
     font-family: 'Sansita', sans-serif;
-    font-size: 3rem;
 }
 
 .page-header {
     margin-top: 2%;
-    padding-bottom: 3%;
-    border-bottom: solid 2px #3c8b9c;
+    border-bottom: solid 4px #765a71;
 
 
 }
@@ -40,10 +44,71 @@ body {
     margin-top: 2%;
     }
 
-.row {
+/* .row {
    margin-top: 3%; 
+} */
+
+.card{
+    border: solid 4px #765a71;
+}
+.card-header{
+ color: #967490;
+
+}
+/* Set the size of the div element that contains the map */
+#map {
+    height: 400px;
+    /* The height is 400 pixels */
+    width: 100%;
+    /* The width is the width of the web page */
+  }
+
+input {
+    height: 30px;
+    margin: 12px 0px;
+    padding: 10px;
+    width: 300px;
+  }
+
+  .test {
+    height: 450px;
+    width: 450px;
+    border-radius: 15px 50px; 
+    background-size: cover;
+    background-position: center;
+    border: #765a71 3px solid;
 }
 
-.recipe-container .places-container{
-    margin-left: 2%;
+.test:hover{
+    opacity: 0.7;
+}
+
+
+.overlay-text {
+    position: relative;
+    text-align: center;
+    font-size: 2.5rem;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    color: #fff;
+    font-weight: bold;
+    letter-spacing: -1px;
+    background: rgba(0, 0, 0, 0.7);
+    top: 50% ;
+    /* width: 100%; */
+    
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+nav {
+    margin-top: -1%;
+    padding: 0%;
+    border: #967490 solid;
+    background-color: #765a71;
+    font-weight: bold;
+    text-decoration:none;
 }
