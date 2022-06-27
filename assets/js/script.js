@@ -31,10 +31,10 @@ for (var i = 0; i <= 20; i++) {
     <img src="${data.hits[i].recipe.image}" class="card-img-top" alt="${data.hits[i].recipe.label}">
       <div class="card-body">
         <h5 class="card-title">${data.hits[i].recipe.label}</h5>
-        <p class="card-text">Ingredients:
+        <p class="card-text">Food Class:
         ${data.hits[i].recipe.dietLabels}
         </p>
-        <a href="${data.hits[i].recipe.url}" class="btn btn-primary">The recipe is here!</a>
+        <a href="${data.hits[i].recipe.url}" target="_blank" class="btn btn-primary">The recipe is here!</a>
       </div>
     </div>
   </div>`
