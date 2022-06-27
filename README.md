@@ -1,7 +1,7 @@
 # 07-Project-Quench
 
 Project Title: 
-Eating in or out (Quench)
+Eating in or out (Quench ..your cravings)
 
 Project Description: 
 This application will allow the users to find and save recipes by choosing available ingredients. It will also recommend possible eating locations using geolocalization of the user.
