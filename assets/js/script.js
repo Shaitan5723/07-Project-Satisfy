@@ -13,6 +13,7 @@ $(document).keypress(function (e) {
   }
 });
 
+// API request and creation of variables for usage with the data. The variables need to be interpolated ${} and inverted commas are needed
 async function sendApiRequest(){
   let APP_ID = "70cfd7b6"
   let API_KEY = "3c907ee335071481a2da16c76c9fcfde"
@@ -33,11 +34,11 @@ for (var i = 0; i <= 20; i++) {
         <p class="card-text">Ingredients:
         ${data.hits[i].recipe.dietLabels}
         </p>
-        <a href="${data.hits[i].recipe.url}" class="btn btn-primary">The recipe is here</a>
+        <a href="${data.hits[i].recipe.url}" class="btn btn-primary">The recipe is here!</a>
       </div>
     </div>
   </div>`
-
+// added the button with the soruce of the recipe, in this way the page is more visually appealing
 
 $("#content").append(foodContent);
 }
