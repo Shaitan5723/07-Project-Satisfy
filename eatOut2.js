@@ -1,5 +1,8 @@
 //Function to call google maps
-    function initMap(){
+ 
+
+function initMap(){
+        
         var center = [
           // sydney
         {
@@ -12,7 +15,15 @@
           center: {lat:-33.89801,lng:151.17964},
         },
         // Surry
+        {
+          zoom:15,
+          center: {lat:-33.88570,lng:151.21392},
+        },
         // Pyrmont
+        {
+          zoom:15,
+          center: {lat:-33.86959,lng:151.19504},
+        },
       ]
 
         var map = new google.maps.Map(document.getElementById("map"),center[0]);
@@ -47,8 +58,6 @@
            });
           }
         }
-};
-
 //funtion to select suburb
 var suburb = document.querySelector("#suburb");
 var btnSuburb = document.querySelector("#btnSuburb");
@@ -58,9 +67,17 @@ btnSuburb.onclick = (event)=>{
   event.preventDefault();
   var selectedSuburb = [].filter
                 .call(suburb.options, option => option.selected)
-                .map(option => option.text);
+                .map(option => option.value);
             alert(selectedSuburb);
+  var selectedSuburbInteger = parseInt(selectedSuburb);
+  console.log(selectedSuburbInteger)
+
+  map.setOptions(center[selectedSuburbInteger]);
+
 };
+};
+
+
 
 
 
