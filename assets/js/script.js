@@ -1,10 +1,12 @@
 let searchButton = $(".btn")
 
+//runs the API request upon hitting the 'Get Recipes' button
 searchButton.click (function()  {
   console.log("button pressed")
   sendApiRequest()
 });
 
+//runs the API request upon hitting the enter button
 $(document).keypress(function (e) {
   if (e.which == 13) {
     console.log("enter pressed")
@@ -23,26 +25,80 @@ async function sendApiRequest(){
   let data = await response.json()
   console.log(data)
 
-  $("#content").empty()
+  $("#content").empty() //empties the content area
 
-for (var i = 0; i <= 20; i++) {
+  for (var i = 0; i <= 11; i++) { //sets the number of cards to 12
+  //defines card content, card content is drawn from the objects defined by the API request
   var foodContent = 
-  `<div class="card col-3" style="width: 18rem;">
-    <img src="${data.hits[i].recipe.image}" class="card-img-top" alt="${data.hits[i].recipe.label}">
+    `<div class="card col-3 offset-0.5" id="${query}-${i}" style="width: 18rem;">
+      <img src="${data.hits[i].recipe.image}" class="card-img-top" id="foodImg" alt="${data.hits[i].recipe.label}">
       <div class="card-body">
-        <h5 class="card-title">${data.hits[i].recipe.label}</h5>
-        <p class="card-text">Food Class:
+        <h5 class="card-title" id="foodTitle">${data.hits[i].recipe.label}</h5>
+        <p class="card-text" id="foodLabel">Food Class:
         ${data.hits[i].recipe.dietLabels}
         </p>
         <a href="${data.hits[i].recipe.url}" target="_blank" class="btn btn-primary">The recipe is here!</a>
       </div>
+      <button class="btn btn-primary" id="saveMe-${i}">Save</button>
     </div>
   </div>`
-// added the button with the soruce of the recipe, in this way the page is more visually appealing
 
-$("#content").append(foodContent);
+
+$("#content").append(foodContent); //appends the cards defined above to the content area
+
+//Defines what happens on clicking the 'Save' button at the bottom of each recipe card
+  let saveBtn = $(`#saveMe-${i}`)
+  saveBtn.click (function()  {
+  console.log('saveBtn pressed')
+  let savedTitle = $(this).siblings(".card-body").children("#foodTitle").html(); //defines the corresponding recipe title to the save button
+  let savedLabel = $(this).siblings(".card-body").children("#foodLabel").html(); //defines the corresponding health label to the save button
+  let savedUrl = $(this).siblings(".card-body").children("a").attr('href'); //defines the corresponding recipe link to the save button
+  let savedImg = $(this).siblings("#foodImg").attr('src');  //defines the corresponding image to the save button
+ 
+  
+  let foodId = $(this).parent().attr("id");
+
+  let foodObject = {'title':savedTitle, 'label':savedLabel, 'link': savedUrl, 'image': savedImg}; 
+  //sets the above defined variables into an object
+
+  localStorage.setItem(foodId,JSON.stringify(foodObject)) //saves the foodObject object as a string into local storage
+
+});
+
 }
 }
+//What happens on clicking the 'Get Saved Recipes' Button
+let savedRecipesBtn = $('.savedRecipesBtn')
+savedRecipesBtn.click (function(){
+  $("#content").empty() //empties the content area
+
+  let keys = Object.keys(localStorage); //sets all the keys from local storage to a single variable
+
+for (var i = 0; i <= keys.length; i++){
+  let savedItem = localStorage.getItem(keys[i]) //pulls all the objects from local storage
+  let savedObj = JSON.parse(savedItem) //converts local storage data into an object
+
+   //defines card content, card content is drawn from the objects pulled from local storage
+  var foodContent = 
+  `<div class="card col-3 offset-0.5" id="${keys[i]}" style="width: 18rem;">
+      <img src="${savedObj.image}" class="card-img-top" id="foodImg" alt="${savedObj.title}">
+      <div class="card-body">
+        <h5 class="card-title" id="foodTitle">${savedObj.title}</h5>
+       <p class="card-text" id="foodLabel">
+        ${savedObj.label}
+        </p>
+        <a href="${savedObj.link}" class="btn btn-primary" id="foodLink">The recipe is here!</a>
+      </div>
+      <button class="btn btn-primary" id="Delete-${i}">Delete</button>
+   </div>
+  </div>`
+
+$("#content").append(foodContent); //appends the cards defined above to the content area
+
+}
+console.log(recipesList);
+
+})
 
 var dropDown = document.getElementById("myDropdown");
 var btn = document.querySelector(".dropbtn");
@@ -65,3 +121,4 @@ window.onclick = function(event) {
 }
 
 btn.addEventListener("click", drop);
+
