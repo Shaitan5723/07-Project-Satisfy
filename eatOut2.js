@@ -29,7 +29,7 @@ function initMap(){
         var map = new google.maps.Map(document.getElementById("map"),center[0]);
     
 
-
+// TODO: centralize markers in array objects.
 // var markers = [
 //   {
 //     coords:{lat:-33.89571,lng:151.18073},//italian 
@@ -56,7 +56,7 @@ function initMap(){
         addMarker({
           coords:{lat:-33.89571,lng:151.18073},//italian The Italian Bowl
           title:"Hello world",
-          content:"<h6>The Italian Bowl</h6>" + "<a>sdfsdf</a>",
+          content:"<h6>The Italian Bowl</h6>" + "<a href='https://theitalianbowl.com.au/' target='_blank'>website</a>",
         });
         addMarker({
           coords:{lat:-33.89851,lng:151.17617},//italian Rosso ANtico Pizza
