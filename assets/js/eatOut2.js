@@ -1,6 +1,4 @@
 //Function to call google maps
- 
-
 function initMap(){
         
         var center = [
@@ -28,8 +26,8 @@ function initMap(){
 
         var map = new google.maps.Map(document.getElementById("map"),center[0]);
     
-
-// TODO: centralize markers in array objects.
+///////////////////////////////////////////////////////////////////////////////////////
+// TODO: centralize markers in array objects. (if there is time before project due date)
 // var markers = [
 //   {
 //     coords:{lat:-33.89571,lng:151.18073},//italian 
@@ -51,12 +49,61 @@ function initMap(){
 //     content: `<h6>${markers[i].content}</h6><br>`
 //   })
 // }
+////////////////////////////////////////////////////////////////////////////////////////
 
+//Function to call markers
+        function addMarker(props){
+          var marker = new google.maps.Marker({
+             position:props.coords,
+             map:map
+           });
+    
+          if (props.content){
+            var infoWindow = new google.maps.InfoWindow({
+             content:props.content
+           });
+           marker.addListener("click",function(){
+             infoWindow.open(map, marker);
+           });
+          }
+        }
+
+
+
+//funtion to select suburb
+var suburb = document.querySelector("#suburb");
+var btnSuburb = document.querySelector("#btnSuburb");
+
+btnSuburb.onclick = (event)=>{
+  event.preventDefault();
+  var selectedSuburb = [].filter
+                .call(suburb.options, option => option.selected)
+                .map(option => option.value);
+            // alert(selectedSuburb);
+  var selectedSuburbInteger = parseInt(selectedSuburb);
+  console.log(selectedSuburbInteger)
+
+  map.setOptions(center[selectedSuburbInteger]);
+
+};
+// function to select type of food
+var food = document.querySelector("#food");
+var btnFood = document.querySelector("#btnFood")
+
+btnFood.onclick = (event)=>{
+  event.preventDefault();
+  var selectedFood = [].filter
+  // console.log(selectedFood);
+                .call(food.options, option => option.selected)
+                .map(option => option.value);
+                alert(selectedFood);
+
+// store markers parameters
         // newtown markers
+
         addMarker({
           coords:{lat:-33.89571,lng:151.18073},//italian The Italian Bowl
-          title:"Hello world",
-          content:"<h6>The Italian Bowl</h6>" + "<a href='https://theitalianbowl.com.au/' target='_blank'>website</a>",
+          content:"<h6>The Italian Bowl</h6>" + "<a href='https://theitalianbowl.com.au/' target='_blank'>website</a>" + "<img src='../images/italianBowl.jpeg'>",
         });
         addMarker({
           coords:{lat:-33.89851,lng:151.17617},//italian Rosso ANtico Pizza
@@ -129,44 +176,7 @@ function initMap(){
           content: "<h6>Thai Silom</h6>"
         });
 
-
-        
-//Function to call markers
-        function addMarker(props){
-          var marker = new google.maps.Marker({
-             position:props.coords,
-             map:map
-           });
-    
-          if (props.content){
-            var infoWindow = new google.maps.InfoWindow({
-             content:props.content
-           });
-           marker.addListener("click",function(){
-             infoWindow.open(map, marker);
-           });
-          }
-        }
-
-
-
-//funtion to select suburb
-var suburb = document.querySelector("#suburb");
-var btnSuburb = document.querySelector("#btnSuburb");
-
-btnSuburb.onclick = (event)=>{
-  event.preventDefault();
-  var selectedSuburb = [].filter
-                .call(suburb.options, option => option.selected)
-                .map(option => option.value);
-            // alert(selectedSuburb);
-  var selectedSuburbInteger = parseInt(selectedSuburb);
-  console.log(selectedSuburbInteger)
-
-  map.setOptions(center[selectedSuburbInteger]);
-
-};
-// function to save restaurants to favourites
+}
 };
 
 
