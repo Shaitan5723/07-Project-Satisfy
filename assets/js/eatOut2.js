@@ -51,26 +51,28 @@ function initMap(){
 // }
 ////////////////////////////////////////////////////////////////////////////////////////
 
+//empty array to store markers added to map in addMarker Function
+var currentMarkers = [];
+ 
 //Function to call markers
-        function addMarker(props){
-          var marker = new google.maps.Marker({
-             position:props.coords,
-             map:map
-           });
-    
-          if (props.content){
-            var infoWindow = new google.maps.InfoWindow({
-             content:props.content
-           });
-           marker.addListener("click",function(){
-             infoWindow.open(map, marker);
-           });
-          }
+function addMarker(props){
+        var marker = new google.maps.Marker({
+            position:props.coords,
+            map:map
+          });
+  
+        if (props.content){
+          var infoWindow = new google.maps.InfoWindow({
+            content:props.content
+          });
+          marker.addListener("click",function(){
+            infoWindow.open(map, marker);
+          });
         }
+        currentMarkers.push(marker)
+      }
 
-
-
-//funtion to select suburb
+//Function to select suburb
 var suburb = document.querySelector("#suburb");
 var btnSuburb = document.querySelector("#btnSuburb");
 
@@ -93,14 +95,41 @@ var btnFood = document.querySelector("#btnFood")
 btnFood.onclick = (event)=>{
   event.preventDefault();
   var selectedFood = [].filter
-  // console.log(selectedFood);
                 .call(food.options, option => option.selected)
                 .map(option => option.value);
-                alert(selectedFood);
+                console.log(selectedFood);
+
+  //Removes all markers before adding next selection
+  for (var i=0; i<currentMarkers.length; i++){
+    currentMarkers[i].setMap(null);
+  }            
+  currentMarkers = [];
+  // add markers by selection of type of food
+  // italian food
+  if (selectedFood == 1){
+    addMarker({
+        coords:{lat:-33.89571,lng:151.18073},//italian The Italian Bowl
+        content:"<h6>The Italian Bowl</h6>" + "<a href='https://theitalianbowl.com.au/' target='_blank'>website</a>" + "<img src='../images/italianBowl.jpeg'>",
+      });
+  }
+  // Thai food
+  if (selectedFood == 2){
+    addMarker({
+        coords:{lat:-33.89664,lng:151.17986},//thai Thai Pothong
+        content: "<h6>Thai Pothong</h6>"
+      }); 
+  }
+  // Japanese Food
+  if (selectedFood == 3){
+     addMarker({
+          coords:{lat:-33.89716,lng:151.17954},//Sushi Train japanese
+          content: "<h6>Sushi Train</h6>"
+        }); 
+        
+  }
 
 // store markers parameters
         // newtown markers
-
         addMarker({
           coords:{lat:-33.89571,lng:151.18073},//italian The Italian Bowl
           content:"<a href='https://theitalianbowl.com.au/' target='_blank'> <h6>The Italian Bowl</h6> </a>" + "<img src='../images/italianBowl.jpeg'>",
