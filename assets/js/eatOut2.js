@@ -132,28 +132,42 @@ btnFood.onclick = (event)=>{
         // newtown markers
         addMarker({
           coords:{lat:-33.89571,lng:151.18073},//italian The Italian Bowl
-          content:"<a href='https://theitalianbowl.com.au/' target='_blank'> <h6>The Italian Bowl</h6> </a>" + "<img src='../images/italianBowl.jpeg'>",
+          content:"<a href='https://theitalianbowl.com.au/' target='_blank'><h6 class='card-heading'>The Italian Bowl</h6></a>" + "<img src='../images/italianBowl.jpeg'>",
         });
         addMarker({
           coords:{lat:-33.89851,lng:151.17617},//italian Rosso ANtico Pizza
-          content: "<h6>Rosso Antico Pizza</h6>"
+          content: "<a href='https://rossoanticopizzabar.com.au/' target='_blank'><h6 class='card-heading'>Rosso Antico Pizza</h6></a>" + "<img src='../images/RossoAntico.png'>"
         });
+        addMarker({ 
+          coords:{lat:-33.89392,lng:151.18320},//iltalian La Favola
+          content: "<a href='http://www.favola.com.au/' target='_blank'><h6 class='card-heading'>La Favola</h6></a>" + "<img src='../images/favola.jpg'>"
+        }); 
         addMarker({
           coords:{lat:-33.89664,lng:151.17986},//thai Thai Pothong
-          content: "<h6>Thai Pothong</h6>"
+          content: "<a href='https://www.thaipothong.com.au/' target='_blank'><h6 class='card-heading'>Thai Pothong</h6></a>" + "<img src='../images/thaipothong.jpg'>"
         }); 
         addMarker({
           coords:{lat:-33.89797,lng:151.17868},//thai Thai Ways
-          content: "<h6>Thai Ways</h6>"
+          content: "<a href='https://www.thaipothong.com.au/thaiways' target='_blank'><h6 class='card-heading'>Thai Ways</h6></a>" + "<img src='../images/thaiways.jpg'>"
         }); 
+        addMarker({ 
+          coords:{lat:-33.89522,lng:151.18189},//thai Thai Riffic
+          content: "<a href='https://www.thairifficnewtown.com.au/' target='_blank'><h6 class='card-heading'>Thai Riffic</h6></a>" + "<img src='../images/thai-riffic.jpg'>"
+        }); 
+
         addMarker({
           coords:{lat:-33.89716,lng:151.17954},//Sushi Train japanese
-          content: "<h6>Sushi Train</h6>"
+          content: "<a href='http://www.sushitrain.com.au/locator/#NT' target='_blank'><h6 class='card-heading'>Sushi Train</h6></a>" + "<img src='../images/sushi-train.jpg'>"
         }); 
-        addMarker({
+        addMarker({ 
           coords:{lat:-33.89898,lng:151.17295},//Sushi Kazuki Enmore
-          content: "<h6>Kazuki Enmore</h6>"
+          content: "<a href='https://order.online/store/kazuki-enmore-2411875/?hideModal=true&pickup=true' target='_blank'><h6 class='card-heading'>Kazuki Enmore</h6></a>" + "<img src='../images/kazuki-enmore.jpg'>"
         }); 
+        addMarker({ 
+          coords:{lat:-33.89538,lng:151.18116},//Sushi Shinmachi Newtown 
+          content: "<a href='https://www.japanesetapasshinmachi.com/' target='_blank'><h6 class='card-heading'>Shinmachi Newtown</h6></a>" + "<img src='../images/shinmachi-newtown.jpg'>"
+        });
+
         // pyrmont markers
         addMarker({
           coords:{lat:-33.86675,lng:151.19281},//japanese Yuzu
