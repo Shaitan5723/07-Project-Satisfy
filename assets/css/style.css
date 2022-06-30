@@ -62,9 +62,24 @@ body {
     margin-top: 2%;
     }
 
+<<<<<<< Updated upstream
+=======
+
+/* .row {
+   margin-top: 3%; 
+} */
+#searchBox{
+    border: solid 4px #765a71;
+    border-radius: 12px;
+    background-color: white;
+}
+
+>>>>>>> Stashed changes
 .card{
     border: solid 4px #765a71;
 }
+
+
 .card-header{
  color: #967490;
 
@@ -160,6 +175,10 @@ nav {
   
   .show {display:block;}
 
-
-
+.btn-primary {
+    background-color: #967490;
+}
+.btn-primary:hover {
+    background-color: #ddd;
+}
   
