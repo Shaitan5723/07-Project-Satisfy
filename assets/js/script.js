@@ -37,9 +37,9 @@ async function sendApiRequest(){
         <p class="card-text" id="foodLabel">Food Class:
         ${data.hits[i].recipe.dietLabels}
         </p>
-        <a href="${data.hits[i].recipe.url}" target="_blank" class="btn btn-primary">The recipe is here!</a>
+        <a href="${data.hits[i].recipe.url}" target="_blank" class="btn btn-primary" id="pageLink">The recipe is here!</a>
       </div>
-      <button class="btn btn-primary" id="saveMe-${i}">Save</button>
+      <button class="btn btn-primary" id="saveMe-${i}" style="margin-bottom: 1px;">Save</button>
     </div>
   </div>`
 
