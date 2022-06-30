@@ -176,10 +176,12 @@ nav {
 .show {display:block;}
 
 .btn-primary {
-    background-color: #967490;
+    background-color: #765a71;
+    border-color: #765a71;
 }
 .btn-primary:hover {
-    background-color: #ddd;
+    background-color: #e8bfe0;
+    border-color: #e8bfe0;
 }
 
 .show {display:block;}
@@ -188,6 +190,19 @@ nav {
     font-family: 'Sansita', sans-serif;
     text-align: center;
 }
+
+#pageLink {
+    position: absolute;
+    bottom: 35px;
+}
+
+#foodLabel {
+    margin-bottom: 40px;
+ }
+
+ #savedRecipes {
+    margin-top: 10px;
+ }
 
 
   
