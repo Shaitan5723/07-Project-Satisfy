@@ -49,6 +49,8 @@ $("#content").append(foodContent); //appends the cards defined above to the cont
 //Defines what happens on clicking the 'Save' button at the bottom of each recipe card
   let saveBtn = $(`#saveMe-${i}`)
   saveBtn.click (function()  {
+  saveBtn.html("Saved");
+  saveBtn.css("background-color", "grey");
   console.log('saveBtn pressed')
   let savedTitle = $(this).siblings(".card-body").children("#foodTitle").html(); //defines the corresponding recipe title to the save button
   let savedLabel = $(this).siblings(".card-body").children("#foodLabel").html(); //defines the corresponding health label to the save button
@@ -89,14 +91,22 @@ for (var i = 0; i <= keys.length; i++){
         </p>
         <a href="${savedObj.link}" class="btn btn-primary" id="foodLink">The recipe is here!</a>
       </div>
-      <button class="btn btn-primary" id="Delete-${i}">Delete</button>
+      <button class="btn btn-primary" id="deleteBtn-${i}">Delete</button>
    </div>
   </div>`
 
 $("#content").append(foodContent); //appends the cards defined above to the content area
 
+let delBtn = $(`#deleteBtn-${i}`)
+delBtn.click (function()  {
+console.log('delBtn pressed')
+  $(this).parent(".card").remove()
+  let removeID = $(this).parent().attr("id")
+  console.log(removeID)
+  localStorage.removeItem(removeID);
+})
 }
-console.log(recipesList);
+console.log();
 
 })
 
