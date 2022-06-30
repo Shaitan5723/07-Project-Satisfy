@@ -1,4 +1,4 @@
-let searchButton = $(".btn")
+let searchButton = $("#searchRecipes")
 
 //runs the API request upon hitting the 'Get Recipes' button
 searchButton.click (function()  {
@@ -49,14 +49,17 @@ $("#content").append(foodContent); //appends the cards defined above to the cont
 //Defines what happens on clicking the 'Save' button at the bottom of each recipe card
   let saveBtn = $(`#saveMe-${i}`)
   saveBtn.click (function()  {
-  console.log('saveBtn pressed')
+    //turns the save button grey and changes 'save' into 'saved'
+  saveBtn.html("Saved");
+  saveBtn.css("background-color", "grey");
+ 
   let savedTitle = $(this).siblings(".card-body").children("#foodTitle").html(); //defines the corresponding recipe title to the save button
   let savedLabel = $(this).siblings(".card-body").children("#foodLabel").html(); //defines the corresponding health label to the save button
   let savedUrl = $(this).siblings(".card-body").children("a").attr('href'); //defines the corresponding recipe link to the save button
   let savedImg = $(this).siblings("#foodImg").attr('src');  //defines the corresponding image to the save button
  
   
-  let foodId = $(this).parent().attr("id");
+  let foodId = $(this).parent().attr("id"); //sets the ID of the key for local storage
 
   let foodObject = {'title':savedTitle, 'label':savedLabel, 'link': savedUrl, 'image': savedImg}; 
   //sets the above defined variables into an object
@@ -68,7 +71,7 @@ $("#content").append(foodContent); //appends the cards defined above to the cont
 }
 }
 //What happens on clicking the 'Get Saved Recipes' Button
-let savedRecipesBtn = $('.savedRecipesBtn')
+let savedRecipesBtn = $('#savedRecipes')
 savedRecipesBtn.click (function(){
   $("#content").empty() //empties the content area
 
@@ -89,15 +92,23 @@ for (var i = 0; i <= keys.length; i++){
         </p>
         <a href="${savedObj.link}" class="btn btn-primary" id="foodLink">The recipe is here!</a>
       </div>
-      <button class="btn btn-primary" id="Delete-${i}">Delete</button>
+      <button class="btn btn-primary" id="deleteBtn-${i}">Delete</button>
    </div>
   </div>`
 
 $("#content").append(foodContent); //appends the cards defined above to the content area
 
-}
-console.log(recipesList);
+//What happens on clicking the 'delete' Button on each recipe card
+let delBtn = $(`#deleteBtn-${i}`)
 
+delBtn.click (function()  {
+// console.log('delBtn pressed')
+  $(this).parent(".card").remove() //removes the parent 'card', which remove all items in the div
+  let removeID = $(this).parent().attr("id") //selects the id of the specific card (which is the same as its key in local storage)
+  
+  localStorage.removeItem(removeID); //removes the selected item from local storage
+})
+}
 })
 
 var dropDown = document.getElementById("myDropdown");
