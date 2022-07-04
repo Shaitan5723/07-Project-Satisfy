@@ -30,7 +30,7 @@ async function sendApiRequest(){
   for (var i = 0; i <= 11; i++) { //sets the number of cards to 12
   //defines card content, card content is drawn from the objects defined by the API request
   var foodContent = 
-    `<div class="card col-3 offset-0.5" id="${query}-${i}" style="width: 18rem;">
+    `<div class="card col-3 offset-0.5" id="recipe-${i}" style="width: 18rem;">
       <img src="${data.hits[i].recipe.image}" class="card-img-top" id="foodImg" alt="${data.hits[i].recipe.label}">
       <div class="card-body">
         <h5 class="card-title" id="foodTitle">${data.hits[i].recipe.label}</h5>
@@ -72,34 +72,38 @@ $("#content").append(foodContent); //appends the cards defined above to the cont
 }
 //What happens on clicking the 'Get Saved Recipes' Button
 let savedRecipesBtn = $('#savedRecipes')
-savedRecipesBtn.click (function(){
+savedRecipesBtn.click (async function(){
   $("#content").empty() //empties the content area
 
-  let keys = Object.keys(localStorage); //sets all the keys from local storage to a single variable
+  //let keys = Object.keys(localStorage); //sets all the keys from local storage to a single variable
 
-for (var i = 0; i <= keys.length; i++){
-  let savedItem = localStorage.getItem(keys[i]) //pulls all the objects from local storage
-  let savedObj = JSON.parse(savedItem) //converts local storage data into an object
 
-   //defines card content, card content is drawn from the objects pulled from local storage
+for (var i = 0; i <= localStorage.length; i++){
+  let savedItem = localStorage.getItem(`recipe-${i}`) //pulls all the objects from local storage
+  let savedObj = await JSON.parse(savedItem) //converts local storage data into an object
+  //let keysTrue = savedObj.hasOwnProperty('title')
+  //console.log(keysTrue)
+
+  //defines card content, card content is drawn from the objects pulled from local storage
   var foodContent = 
-  `<div class="card col-3 offset-0.5" id="${keys[i]}" style="width: 18rem;">
-      <img src="${savedObj.image}" class="card-img-top" id="foodImg" alt="${savedObj.title}">
+  `<div class="card col-3 offset-0.5" id="recipe-${i}" style="width: 18rem;">
+      <img src="${savedObj.image}" class="card-img-top" id="foodImg" alt="${savedObj.title}"/> 
       <div class="card-body">
         <h5 class="card-title" id="foodTitle">${savedObj.title}</h5>
        <p class="card-text" id="foodLabel">
         ${savedObj.label}
         </p>
-        <a href="${savedObj.link}" class="btn btn-primary" id="foodLink">The recipe is here!</a>
+        <a href="${savedObj.link}" class="btn btn-primary" id="pageLink">The recipe is here!</a>
       </div>
       <button class="btn btn-primary" id="deleteBtn-${i}">Delete</button>
    </div>
   </div>`
+//need to make sure the image is ready before loading, otherwise an error occurs
 
 $("#content").append(foodContent); //appends the cards defined above to the content area
 
 //What happens on clicking the 'delete' Button on each recipe card
-let delBtn = $(`#deleteBtn-${i}`)
+let delBtn = $(`#deleteBtn-${i}`) 
 
 delBtn.click (function()  {
 // console.log('delBtn pressed')
@@ -108,8 +112,9 @@ delBtn.click (function()  {
   
   localStorage.removeItem(removeID); //removes the selected item from local storage
 })
-}
-})
+ }
+ })
+
 
 var dropDown = document.getElementById("myDropdown");
 var btn = document.querySelector(".dropbtn");
